@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "100843527005",
+    "project_id": "festapp-3b07c",
+    "storage_bucket": "festapp-3b07c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:100843527005:android:1a830e47b78a634775e6b4",
+        "android_client_info": {
+          "package_name": "com.example.festapp_ofc"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAcN-8tTKwzAnfuYR7z-WzAiiOAkfKAZJ0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
