@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".BuscarEventoActivity">
+
+    <TextView
+        android:id="@+id/text_buscar_evento"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:text="Buscar Evento:"
+        android:textColor="@color/black"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editText_nome_evento_buscar"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/caixa_texto"
+        android:ems="10"
+        android:hint="Digite o nome do Evento:"
+        android:inputType="textEmailAddress"
+        android:padding="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editText_descricao_evento_buscar"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="172dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/caixa_texto"
+        android:ems="10"
+        android:hint="Descrição do Evento"
+        android:inputType="textEmailAddress"
+        android:padding="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextDate_evento_inicio_buscar"
+        android:layout_width="169dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="240dp"
+        android:clickable="true"
+        android:ems="10"
+        android:focusable="true"
+        android:inputType="date"
+        android:hint="Data de Início"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextTime_evento_inicio_buscar"
+        android:layout_width="162dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="240dp"
+        android:layout_marginEnd="32dp"
+        android:ems="10"
+        android:inputType="time"
+        android:focusable="true"
+        android:clickable="true"
+        android:hint="Hora de Início"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.995"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextDate_evento_termino_buscar"
+        android:layout_width="169dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="292dp"
+        android:clickable="true"
+        android:ems="10"
+        android:focusable="true"
+        android:inputType="date"
+        android:hint="Data de Término"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextTime_evento_termino_buscar"
+        android:layout_width="162dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="292dp"
+        android:layout_marginEnd="32dp"
+        android:clickable="true"
+        android:ems="10"
+        android:focusable="true"
+        android:inputType="time"
+        android:hint="Hora do Término"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.995"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editText_local_evento_buscar"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="344dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/caixa_texto"
+        android:ems="10"
+        android:hint="Local do Evento"
+        android:inputType="textEmailAddress"
+        android:padding="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editText_local_evento_complemento_buscar"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="412dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/caixa_texto"
+        android:ems="10"
+        android:hint="Complemento"
+        android:inputType="textEmailAddress"
+        android:padding="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextNumber_participantes_buscar"
+        android:layout_width="163dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="480dp"
+        android:background="@drawable/caixa_texto"
+        android:ems="10"
+        android:hint="Número de Participantes"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextNumber_preco_buscar"
+        android:layout_width="163dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="480dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/caixa_texto"
+        android:ems="10"
+        android:hint="Preço do Ingresso"
+        android:inputType="numberDecimal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_Buscar_evento"
+        android:layout_width="0dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="324dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/btn_fundo_azul"
+        android:text="Pesquisar"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText_descricao_evento_buscar" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_excluir_evento"
+        android:layout_width="153dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="396dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/btn_fundo_azul"
+        android:text="Exluir"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText_descricao_evento_buscar" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_atualizar_evento"
+        android:layout_width="153dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="440dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/btn_fundo_azul"
+        android:text="Atualizar"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText_descricao_evento_buscar" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

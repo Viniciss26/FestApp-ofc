@@ -1,7 +1,10 @@
 package com.example.festapp_ofc
 
 import android.content.Intent
+import android.media.Image
 import android.os.Bundle
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -23,6 +26,16 @@ class TelaPrincipalActivity : AppCompatActivity() {
             val voltarTelaLogin = Intent(this, LoginActivity::class.java)
             startActivity(voltarTelaLogin)
             finish()
+        }
+        val textView = findViewById<TextView>(R.id.text_eventos)
+        textView.setOnClickListener{
+            val intent = Intent(this, EventosPrincipalActivity::class.java)
+            startActivity(intent)
+        }
+        val imageView = findViewById<ImageView>(R.id.imageView_usuario)
+        imageView.setOnClickListener{
+            val intent = Intent(this, UsuarioPrincipalActivity::class.java)
+            startActivity(intent)
         }
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
