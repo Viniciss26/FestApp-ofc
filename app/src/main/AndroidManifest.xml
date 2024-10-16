@@ -13,6 +13,9 @@
         android:theme="@style/Theme.FestAppofc"
         tools:targetApi="31">
         <activity
+            android:name=".AtualizarUserActivity"
+            android:exported="false" />
+        <activity
             android:name=".AtualizarEventoActivity"
             android:exported="false" />
         <activity
@@ -48,6 +51,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyAWqni2JZ6gIG8SjDv2plzXZF0Or0JzrPw" />
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+
+
     </application>
 
 </manifest>

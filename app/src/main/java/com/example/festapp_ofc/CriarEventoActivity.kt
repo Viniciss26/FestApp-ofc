@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.festapp_ofc.databinding.ActivityCriarEventoBinding
+import com.google.android.gms.maps.SupportMapFragment
 import com.google.firebase.firestore.FirebaseFirestore
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -19,12 +20,41 @@ import java.util.Locale
 class CriarEventoActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCriarEventoBinding
     private val db = FirebaseFirestore.getInstance()
+    private lateinit var startDateEditText: EditText
+    private lateinit var startTimeEditText: EditText
+    private lateinit var endDateEditText: EditText
+    private lateinit var endTimeEditText: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding  = ActivityCriarEventoBinding.inflate(layoutInflater)
         enableEdgeToEdge()
         setContentView(binding.root)
+
+        startDateEditText = findViewById(R.id.editTextDate_evento_inicio)
+        startTimeEditText = findViewById(R.id.editTextTime_evento_inicio)
+        endDateEditText = findViewById(R.id.editTextDate_evento_termino)
+        endTimeEditText = findViewById(R.id.editTextTime_evento_termino)
+
+        startDateEditText.setOnClickListener {
+            openDatePicker(startDateEditText)
+        }
+
+        startTimeEditText.setOnClickListener {
+            openTimePicker(startTimeEditText)
+        }
+
+        endDateEditText.setOnClickListener {
+            openDatePicker(endDateEditText)
+        }
+
+        endTimeEditText.setOnClickListener {
+            openTimePicker(endTimeEditText)
+        }
+
+
+        //val mapFragment = supportFragmentManager.findFragmentById(R.id.map_fragment) as SupportMapFragment
+
 
         binding.buttonCriarEvento.setOnClickListener {
             val nomeEvento = binding.editTextNomeEvento.text.toString()
@@ -80,81 +110,39 @@ class CriarEventoActivity : AppCompatActivity() {
         }
 
 
-        //Data e Hora de Início
-        val editTextDataInicio: EditText = findViewById(R.id.editTextDate_evento_inicio)
-        val editTextHoraInicio: EditText = findViewById(R.id.editTextTime_evento_inicio)
-
-        //Data e Hora de Término
-        val editTextDataTermino: EditText = findViewById(R.id.editTextDate_evento_termino)
-        val editTextHoraTermino: EditText = findViewById(R.id.editTextTime_evento_termino)
-
-        val calendar = Calendar.getInstance()
-        val year = calendar.get(Calendar.YEAR)
-        val month = calendar.get(Calendar.MONTH)
-        val day = calendar.get(Calendar.DAY_OF_MONTH)
-        val hour = calendar.get(Calendar.HOUR_OF_DAY)
-        val minute = calendar.get(Calendar.MINUTE)
-
-        val dateSetListenerInicio = DatePickerDialog.OnDateSetListener { _, year, month, dayOfMonth ->
-            val selectDate = Calendar.getInstance()
-            selectDate.set(year, month, dayOfMonth)
-            val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
-            val formattedDate = dateFormat.format(selectDate.time)
-            editTextDataInicio.setText(formattedDate)
-        }
-
-        val dateSetListenerTermino = DatePickerDialog.OnDateSetListener { _, year, month, dayOfMonth ->
-            val selectDate = Calendar.getInstance()
-            selectDate.set(year, month, dayOfMonth)
-            val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
-            val formattedDate = dateFormat.format(selectDate.time)
-            editTextDataTermino.setText(formattedDate)
-        }
-
-        val timeSetListenerInicio = TimePickerDialog.OnTimeSetListener { _, hourOfDay, minute ->
-            val timeFormat = SimpleDateFormat("HH:mm", Locale.getDefault())
-            calendar.set(Calendar.HOUR_OF_DAY, hourOfDay)
-            calendar.set(Calendar.MINUTE, minute)
-            val formattedTime = timeFormat.format(calendar.time)
-            editTextHoraInicio.setText(formattedTime)
-        }
-
-        val timeSetListenerTermino = TimePickerDialog.OnTimeSetListener { _, hourOfDay, minute ->
-            val timeFormat = SimpleDateFormat("HH:mm", Locale.getDefault())
-            calendar.set(Calendar.HOUR_OF_DAY, hourOfDay)
-            calendar.set(Calendar.MINUTE, minute)
-            val formattedTime = timeFormat.format(calendar.time)
-            editTextHoraTermino.setText(formattedTime)
-        }
-
-        editTextDataInicio.setOnClickListener {
-            DatePickerDialog(
-                this, dateSetListenerInicio, year, month, day
-            ).show()
-        }
-
-        editTextDataTermino.setOnClickListener {
-            DatePickerDialog(
-                this, dateSetListenerTermino, year, month, day
-            ).show()
-        }
-
-        editTextHoraInicio.setOnClickListener {
-            TimePickerDialog(
-                this, timeSetListenerInicio, hour, minute, true
-            ).show()
-        }
-
-        editTextHoraTermino.setOnClickListener {
-            TimePickerDialog(
-                this, timeSetListenerTermino, hour, minute, true
-            ).show()
-        }
-
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
     }
+
+    private fun openDatePicker(editText: EditText) {
+        val calendar = Calendar.getInstance()
+        val year = calendar.get(Calendar.YEAR)
+        val month = calendar.get(Calendar.MONTH)
+        val day = calendar.get(Calendar.DAY_OF_MONTH)
+
+        val datePickerDialog = DatePickerDialog(this, { _, selectedYear, selectedMonth, selectedDay ->
+            val sdf = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+            val selectedDate = Calendar.getInstance()
+            selectedDate.set(selectedYear, selectedMonth, selectedDay)
+            editText.setText(sdf.format(selectedDate.time))
+        }, year, month, day)
+
+        datePickerDialog.show()
+    }
+
+    private fun openTimePicker(editText: EditText) {
+        val calendar = Calendar.getInstance()
+        val hour = calendar.get(Calendar.HOUR_OF_DAY)
+        val minute = calendar.get(Calendar.MINUTE)
+
+        val timePickerDialog = TimePickerDialog(this, { _, selectedHour, selectedMinute ->
+            editText.setText(String.format("%02d:%02d", selectedHour, selectedMinute))
+        }, hour, minute, true)
+
+        timePickerDialog.show()
+    }
+
 }
