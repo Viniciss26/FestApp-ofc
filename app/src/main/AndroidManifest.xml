@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -13,25 +17,29 @@
         android:theme="@style/Theme.FestAppofc"
         tools:targetApi="31">
         <activity
-            android:name=".AtualizarUserActivity"
+            android:name=".DadosUserActivity"
             android:exported="false" />
         <activity
-            android:name=".AtualizarEventoActivity"
+            android:name=".AlterarNomeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AlterarSenhaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AtualizarUserActivity"
             android:exported="false" />
         <activity
             android:name=".BuscarEventoActivity"
             android:exported="false" />
         <activity
             android:name=".CriarEventoActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".EventosPrincipalActivity"
             android:exported="false" />
         <activity
             android:name=".UsuarioPrincipalActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Usuario_principal"
             android:exported="false" />
         <activity
             android:name=".TelaPrincipalActivity"
@@ -58,8 +66,6 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
-
-
     </application>
 
 </manifest>

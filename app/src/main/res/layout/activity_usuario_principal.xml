@@ -7,32 +7,207 @@
     android:layout_height="match_parent"
     tools:context=".UsuarioPrincipalActivity">
 
-    <Button
-        android:id="@+id/btn_atualizar_user"
-        android:layout_width="wrap_content"
+    
+    <LinearLayout
+        android:id="@+id/linearSenha"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="216dp"
-        android:backgroundTint="@color/black"
-        android:padding="15dp"
-        android:text="Atualizar"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:orientation="horizontal"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="?android:attr/selectableItemBackground"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="40dp">
 
-    <Button
-        android:id="@+id/btn_excluir_user"
-        android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/alterarSenha"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Alterar Senha"
+            android:layout_marginStart="30dp"
+            android:fontFamily="@font/poppins"
+            android:textSize="15sp"
+            />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_arrow"
+            android:contentDescription="@string/seta"
+            android:layout_marginEnd="30dp"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/linearCadastro"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="300dp"
-        android:backgroundTint="@color/black"
+        android:orientation="horizontal"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="?android:attr/selectableItemBackground"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="80dp" >
+
+        <TextView
+            android:id="@+id/alterarEmail"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Alterar Email"
+            android:layout_marginStart="30dp"
+            android:fontFamily="@font/poppins"
+            android:textSize="15sp"
+            />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_arrow"
+            android:contentDescription="@string/seta"
+            android:layout_marginEnd="30dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearNome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="?android:attr/selectableItemBackground"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="120dp" >
+
+        <TextView
+            android:id="@+id/alterarNome"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Alterar Nome"
+            android:layout_marginStart="30dp"
+            android:fontFamily="@font/poppins"
+            android:textSize="15sp"
+            />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_arrow"
+            android:contentDescription="@string/seta"
+            android:layout_marginEnd="30dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearDados"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="?android:attr/selectableItemBackground"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="160dp" >
+
+        <TextView
+            android:id="@+id/dadosUser"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Dados do Usuário"
+            android:layout_marginStart="30dp"
+            android:fontFamily="@font/poppins"
+            android:textSize="15sp"
+            />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_arrow"
+            android:contentDescription="@string/seta"
+            android:layout_marginEnd="30dp"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/linearExcluir"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="?android:attr/selectableItemBackground"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="200dp" >
+
+        <TextView
+            android:id="@+id/sair"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Excluir Conta"
+            android:layout_marginStart="30dp"
+            android:fontFamily="@font/poppins"
+            android:textSize="15sp"
+            />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_arrow"
+            android:contentDescription="@string/seta"
+            android:layout_marginEnd="30dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/iconsNav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
         android:padding="15dp"
-        android:text="Excluir"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@color/white"
+        android:elevation="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent" >
+
+        <ImageButton
+            android:id="@+id/iconHome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_home"
+            android:layout_marginStart="50dp"
+            android:contentDescription="Ícone de Home"
+            android:background="@android:color/transparent"/>
+
+        <ImageButton
+            android:id="@+id/iconCalendar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_calendar"
+            android:layout_marginStart="50dp"
+            android:contentDescription="Ícone de calendario"
+            android:background="@android:color/transparent"/>
+
+        <ImageButton
+            android:id="@+id/iconPerson"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_person"
+            android:layout_marginStart="50dp"
+            android:contentDescription="Ícone de user"
+            android:background="@android:color/transparent"/>
+
+        <ImageButton
+            android:id="@+id/iconExit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_exit"
+            android:layout_marginStart="50dp"
+            android:contentDescription="Ícone de sair"
+            android:background="@android:color/transparent"/>
+    </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">FestApp-ofc</string>
+    <string name="slogan">Planeje e coordene eventos sem \nesforço</string>
+    <string name="descricao">Insira os detalhes do evento para \ncomeçar</string>
+    <string name="inscrever"><ul>Inscreva-se</ul></string>
+    <string name="seta">Seta</string>
 </resources>

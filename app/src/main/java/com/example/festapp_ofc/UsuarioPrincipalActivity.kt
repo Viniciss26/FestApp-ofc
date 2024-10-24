@@ -14,6 +14,8 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import android.app.AlertDialog  // Adicionado
 import android.content.DialogInterface  // Adicionado
+import android.widget.ImageButton
+import android.widget.ImageView
 
 class UsuarioPrincipalActivity : AppCompatActivity() {
     private lateinit var binding: ActivityUsuarioPrincipalBinding
@@ -24,7 +26,7 @@ class UsuarioPrincipalActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(binding.root)
 
-        binding.btnExcluirUser.setOnClickListener {
+        binding.linearExcluir.setOnClickListener {
             val user = FirebaseAuth.getInstance().currentUser
             val db = FirebaseFirestore.getInstance()
 
@@ -63,11 +65,47 @@ class UsuarioPrincipalActivity : AppCompatActivity() {
             }
         }
 
-        binding.btnAtualizarUser.setOnClickListener {
+        binding.linearCadastro.setOnClickListener {
             val telaAtualizarUser = Intent(this, AtualizarUserActivity::class.java)
             startActivity(telaAtualizarUser)
         }
 
+        binding.linearSenha.setOnClickListener {
+            val telaAtualizarPassword = Intent(this, AlterarSenhaActivity::class.java)
+            startActivity(telaAtualizarPassword)
+        }
+
+        binding.linearNome.setOnClickListener {
+            val telaAtualizarNome = Intent(this, AlterarNomeActivity::class.java)
+            startActivity(telaAtualizarNome)
+        }
+
+        binding.linearDados.setOnClickListener {
+            val telaDadosUser = Intent(this, DadosUserActivity::class.java)
+            startActivity(telaDadosUser)
+        }
+
+        binding.iconExit.setOnClickListener {
+            FirebaseAuth.getInstance().signOut()
+            val voltarTelaLogin = Intent(this, LoginActivity::class.java)
+            startActivity(voltarTelaLogin)
+            finish()
+        }
+        val imageButton = findViewById<ImageButton>(R.id.iconCalendar)
+        imageButton.setOnClickListener{
+            val intent = Intent(this, EventosPrincipalActivity::class.java)
+            startActivity(intent)
+        }
+        val imageButton2 = findViewById<ImageButton>(R.id.iconPerson)
+        imageButton2.setOnClickListener{
+            val intent = Intent(this, UsuarioPrincipalActivity::class.java)
+            startActivity(intent)
+        }
+        val imageButton3 = findViewById<ImageButton>(R.id.iconHome)
+        imageButton3.setOnClickListener {
+            val intent = Intent(this,TelaPrincipalActivity::class.java)
+            startActivity(intent)
+        }
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())

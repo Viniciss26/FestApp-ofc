@@ -5,14 +5,14 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AtualizarUserActivity">
+    tools:context=".AlterarSenhaActivity">
 
     <TextView
-        android:id="@+id/textAlterarEmail"
+        android:id="@+id/textAlterarSenha"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="150dp"
-        android:text="Altere seu email"
+        android:text="Altere sua senha"
         android:textColor="@color/black"
         android:textSize="30sp"
         android:textStyle="bold"
@@ -22,40 +22,57 @@
         app:layout_constraintTop_toTopOf="parent"/>
 
     <EditText
-        android:id="@+id/editTextNewEmail"
+        android:id="@+id/editTextNewPassword"
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
         android:layout_marginTop="220dp"
         android:background="@drawable/edit_text"
-        android:hint="Novo email"
+        android:hint="Nova senha"
         android:fontFamily="@font/poppins"
         android:textColorHint="@color/black"
         android:textSize="17sp"
-        android:inputType="textEmailAddress"
+        android:inputType="textPassword"
         android:paddingLeft="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/buttonAlterarEmail"
+    <EditText
+        android:id="@+id/editTextConfirmPassword"
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
         android:layout_marginTop="280dp"
+        android:background="@drawable/edit_text"
+        android:hint="Confirmar nova senha "
+        android:fontFamily="@font/poppins"
+        android:textColorHint="@color/black"
+        android:paddingLeft="20dp"
+        android:inputType="textPassword"
+        android:textSize="17sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/buttonAlterarPassword"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginTop="340dp"
         android:background="@drawable/btn_verde"
         android:textColor="@color/white"
         android:fontFamily="@font/poppins"
         android:textAllCaps="false"
         android:textSize="17sp"
-        android:text="Alterar Email"
+        android:text="Alterar Senha"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

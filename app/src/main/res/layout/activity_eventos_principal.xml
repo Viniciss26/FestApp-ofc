@@ -7,47 +7,111 @@
     android:layout_height="match_parent"
     tools:context=".EventosPrincipalActivity">
 
-
-    <Button
-        android:id="@+id/btn_criar_evento"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/linearCriarEvento"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="216dp"
-        android:backgroundTint="@color/black"
-        android:padding="15dp"
-        android:text="Criar"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:orientation="horizontal"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="?android:attr/selectableItemBackground"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="40dp" >
 
-    <Button
-        android:id="@+id/btn_buscar_evento"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="288dp"
-        android:backgroundTint="@color/black"
-        android:padding="15dp"
-        android:text="Buscar Eventos"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/criarEvento"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Criar novo evento"
+            android:fontFamily="@font/poppins"
+            android:layout_marginStart="30dp"
+            android:textSize="15dp" />
 
-    <Button
-        android:id="@+id/btn_atualizar_evento"
-        android:layout_width="wrap_content"
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_arrow"
+            android:contentDescription="@string/seta"
+            android:layout_marginEnd="30dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearBuscarEvento"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="364dp"
-        android:backgroundTint="@color/black"
+        android:orientation="horizontal"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="?android:attr/selectableItemBackground"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="80dp" >
+
+        <TextView
+            android:id="@+id/buscarEvento"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Pesquisar evento"
+            android:fontFamily="@font/poppins"
+            android:layout_marginStart="30dp"
+            android:textSize="15dp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_arrow"
+            android:contentDescription="@string/seta"
+            android:layout_marginEnd="30dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/iconsNav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
         android:padding="15dp"
-        android:text="Atualizar Eventos"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@color/white"
+        android:elevation="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent" >
+
+        <ImageButton
+            android:id="@+id/iconHome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_home"
+            android:layout_marginStart="50dp"
+            android:contentDescription="Ícone de Home"
+            android:background="@android:color/transparent"/>
+
+        <ImageButton
+            android:id="@+id/iconCalendar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_calendar"
+            android:layout_marginStart="50dp"
+            android:contentDescription="Ícone de calendario"
+            android:background="@android:color/transparent"/>
+
+        <ImageButton
+            android:id="@+id/iconPerson"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_person"
+            android:layout_marginStart="50dp"
+            android:contentDescription="Ícone de user"
+            android:background="@android:color/transparent"/>
+
+        <ImageButton
+            android:id="@+id/iconExit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_exit"
+            android:layout_marginStart="50dp"
+            android:contentDescription="Ícone de sair"
+            android:background="@android:color/transparent"/>
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

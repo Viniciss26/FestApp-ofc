@@ -3,6 +3,7 @@ package com.example.festapp_ofc
 import android.content.Intent
 import android.media.Image
 import android.os.Bundle
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
@@ -21,18 +22,18 @@ class TelaPrincipalActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(binding.root)
 
-        binding.btnSair.setOnClickListener {
+        binding.iconExit.setOnClickListener {
             FirebaseAuth.getInstance().signOut()
             val voltarTelaLogin = Intent(this, LoginActivity::class.java)
             startActivity(voltarTelaLogin)
             finish()
         }
-        val textView = findViewById<TextView>(R.id.text_eventos)
-        textView.setOnClickListener{
+        val imageButton = findViewById<ImageButton>(R.id.iconCalendar)
+        imageButton.setOnClickListener{
             val intent = Intent(this, EventosPrincipalActivity::class.java)
             startActivity(intent)
         }
-        val imageView = findViewById<ImageView>(R.id.imageView_usuario)
+        val imageView = findViewById<ImageView>(R.id.iconPerson)
         imageView.setOnClickListener{
             val intent = Intent(this, UsuarioPrincipalActivity::class.java)
             startActivity(intent)

@@ -4,7 +4,10 @@ import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.icu.util.Calendar
 import android.os.Bundle
+import android.util.Log
+import android.view.MotionEvent
 import android.widget.EditText
+import android.widget.ScrollView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -52,9 +55,19 @@ class CriarEventoActivity : AppCompatActivity() {
             openTimePicker(endTimeEditText)
         }
 
+        // Iniciar o mapa e ativar e desativar a ScrollView
+        val mapFragment = supportFragmentManager.findFragmentById(R.id.mapFragment) as SupportMapFragment
+        val scrollView = findViewById<ScrollView>(R.id.mainScrollView)
 
-        //val mapFragment = supportFragmentManager.findFragmentById(R.id.map_fragment) as SupportMapFragment
+        mapFragment.getMapAsync { googleMap ->
+            googleMap.setOnCameraMoveStartedListener {
+                scrollView.requestDisallowInterceptTouchEvent(true)
+            }
 
+            googleMap.setOnCameraIdleListener {
+                scrollView.requestDisallowInterceptTouchEvent(false)
+            }
+        }
 
         binding.buttonCriarEvento.setOnClickListener {
             val nomeEvento = binding.editTextNomeEvento.text.toString()
@@ -65,12 +78,13 @@ class CriarEventoActivity : AppCompatActivity() {
             val horaTermino = binding.editTextTimeEventoTermino.text.toString()
             val localEvento = binding.editTextLocalEvento.text.toString()
             val complementoEvento = binding.editTextLocalEventoComplemento.text.toString()
+            val cepEvento = binding.editTextCepEvento.text.toString()
             val participantesEvento = binding.editTextNumberParticipantes.text.toString()
             val precoIngresso = binding.editTextNumberPreco.text.toString()
 
             if (nomeEvento.isNotEmpty() && descricaoEvento.isNotEmpty() && dataInicio.isNotEmpty() && horaInicio.isNotEmpty()
                 && dataTermino.isNotEmpty() && horaTermino.isNotEmpty() && localEvento.isNotEmpty() && complementoEvento.isNotEmpty()
-                && participantesEvento.isNotEmpty() && precoIngresso.isNotEmpty()) {
+                && cepEvento.isNotEmpty() && participantesEvento.isNotEmpty() && precoIngresso.isNotEmpty()) {
 
                 val eventoData = hashMapOf(
                     "nome" to nomeEvento,
@@ -81,6 +95,7 @@ class CriarEventoActivity : AppCompatActivity() {
                     "horaTermino" to horaTermino,
                     "local" to localEvento,
                     "complemento" to complementoEvento,
+                    "CEP" to cepEvento,
                     "participantes" to participantesEvento,
                     "preco" to precoIngresso
                 )
@@ -98,11 +113,13 @@ class CriarEventoActivity : AppCompatActivity() {
                         binding.editTextTimeEventoTermino.text.clear()
                         binding.editTextLocalEvento.text.clear()
                         binding.editTextLocalEventoComplemento.text.clear()
+                        binding.editTextCepEvento.text.clear()
                         binding.editTextNumberParticipantes.text.clear()
                         binding.editTextNumberPreco.text.clear()
                     }
                     .addOnFailureListener { e ->
-                        Toast.makeText(this, "Erro ao criar evento", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, "Erro ao criar evento: ${e.message}", Toast.LENGTH_SHORT).show()
+                        Log.e("CriarEventoActivity", "Erro ao criar evento", e)
                     }
             }else{
                 Toast.makeText(this, "Por favor, Preencha todos os campos obrigatórios", Toast.LENGTH_SHORT).show()

@@ -1,7 +1,9 @@
 package com.example.festapp_ofc
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -61,6 +63,12 @@ class CadastroActivity : AppCompatActivity() {
                     snackbar.show()
                 }
             }
+        }
+
+        val textView = findViewById<TextView>(R.id.entrar)
+        textView.setOnClickListener {
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
         }
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())

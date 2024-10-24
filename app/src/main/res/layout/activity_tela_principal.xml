@@ -7,53 +7,72 @@
     android:layout_height="match_parent"
     tools:context=".TelaPrincipalActivity">
 
-    <Button
-        android:id="@+id/btn_sair"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="460dp"
-        android:backgroundTint="@color/black"
-        android:padding="15dp"
-        android:text="Sair"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toTopOf="@id/iconsNav"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/text_eventos"
-        android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!--Parte Fixa da Navegação -->
+    <LinearLayout
+        android:id="@+id/iconsNav"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="76dp"
-        android:text="Eventos"
-        android:textColor="@android:color/black"
-        android:textSize="20sp"
+        android:orientation="horizontal"
+        android:padding="15dp"
+        android:background="@color/white"
+        android:elevation="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.038" />
+        app:layout_constraintEnd_toEndOf="parent" >
 
-    <View
-        android:id="@+id/linha"
-        android:layout_width="0dp"
-        android:layout_height="4dp"
-        android:background="@color/black"
-        app:layout_constraintTop_toBottomOf="@id/text_eventos"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="8dp"/>
+        <ImageButton
+            android:id="@+id/iconHome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_home"
+            android:layout_marginStart="50dp"
+            android:contentDescription="Ícone de Home"
+            android:background="@android:color/transparent"/>
 
-    <ImageView
-        android:id="@+id/imageView_usuario"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/linha"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/icone_usuario" />
+        <ImageButton
+            android:id="@+id/iconCalendar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_calendar"
+            android:layout_marginStart="50dp"
+            android:contentDescription="Ícone de calendario"
+            android:background="@android:color/transparent"/>
 
+        <ImageButton
+            android:id="@+id/iconPerson"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_person"
+            android:layout_marginStart="50dp"
+            android:contentDescription="Ícone de user"
+            android:background="@android:color/transparent"/>
 
+        <ImageButton
+            android:id="@+id/iconExit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_exit"
+            android:layout_marginStart="50dp"
+            android:contentDescription="Ícone de sair"
+            android:background="@android:color/transparent"/>
+
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
