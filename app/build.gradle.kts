@@ -56,4 +56,5 @@ dependencies {
     implementation("com.google.firebase:firebase-firestore-ktx")
     implementation ("com.google.android.gms:play-services-maps:18.1.0")
     implementation ("com.google.android.material:material:1.8.0")
+    implementation ("com.squareup.okhttp3:okhttp:4.9.3")
 }

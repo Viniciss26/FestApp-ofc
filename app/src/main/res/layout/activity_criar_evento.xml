@@ -230,10 +230,70 @@
             android:paddingLeft="20dp" />
 
         <EditText
+            android:id="@+id/editText_logradouro_evento"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:hint="Logradouro"
+            android:background="@drawable/edit_text"
+            android:layout_marginTop="20dp"
+            android:inputType="text"
+            android:fontFamily="@font/poppins"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="32dp"
+            android:textColorHint="@color/black"
+            android:textSize="17dp"
+            android:paddingLeft="20dp" />
+
+        <EditText
             android:id="@+id/editText_local_evento_complemento"
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:hint="Complemento"
+            android:background="@drawable/edit_text"
+            android:layout_marginTop="20dp"
+            android:inputType="text"
+            android:fontFamily="@font/poppins"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="32dp"
+            android:textColorHint="@color/black"
+            android:textSize="17dp"
+            android:paddingLeft="20dp" />
+
+        <EditText
+            android:id="@+id/editText_bairro_evento"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:hint="Bairro"
+            android:background="@drawable/edit_text"
+            android:layout_marginTop="20dp"
+            android:inputType="text"
+            android:fontFamily="@font/poppins"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="32dp"
+            android:textColorHint="@color/black"
+            android:textSize="17dp"
+            android:paddingLeft="20dp" />
+
+        <EditText
+            android:id="@+id/editText_uf_evento"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:hint="UF"
+            android:background="@drawable/edit_text"
+            android:layout_marginTop="20dp"
+            android:inputType="text"
+            android:fontFamily="@font/poppins"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="32dp"
+            android:textColorHint="@color/black"
+            android:textSize="17dp"
+            android:paddingLeft="20dp" />
+
+        <EditText
+            android:id="@+id/editText_localidade_evento"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:hint="Localidade"
             android:background="@drawable/edit_text"
             android:layout_marginTop="20dp"
             android:inputType="text"

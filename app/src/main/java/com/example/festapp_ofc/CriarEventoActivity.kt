@@ -3,7 +3,10 @@ package com.example.festapp_ofc
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.icu.util.Calendar
+import android.net.Uri
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.MotionEvent
 import android.widget.EditText
@@ -14,8 +17,14 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.festapp_ofc.databinding.ActivityCriarEventoBinding
+import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
 import com.google.firebase.firestore.FirebaseFirestore
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import org.json.JSONObject
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -69,6 +78,18 @@ class CriarEventoActivity : AppCompatActivity() {
             }
         }
 
+        binding.editTextCepEvento.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+                val cep = s.toString()
+                if (cep.length == 8) {
+                    buscarEnderecoPorCep(cep)
+                }
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+        })
+
         binding.buttonCriarEvento.setOnClickListener {
             val nomeEvento = binding.editTextNomeEvento.text.toString()
             val descricaoEvento = binding.editTextDescricaoEvento.text.toString()
@@ -77,13 +98,18 @@ class CriarEventoActivity : AppCompatActivity() {
             val dataTermino = binding.editTextDateEventoTermino.text.toString()
             val horaTermino = binding.editTextTimeEventoTermino.text.toString()
             val localEvento = binding.editTextLocalEvento.text.toString()
+            val logradouroEvento = binding.editTextLogradouroEvento.text.toString()
             val complementoEvento = binding.editTextLocalEventoComplemento.text.toString()
+            val bairroEvento = binding.editTextBairroEvento.text.toString()
+            val ufEvento = binding.editTextUfEvento.text.toString()
+            val localidadeEvento = binding.editTextLocalidadeEvento.text.toString()
             val cepEvento = binding.editTextCepEvento.text.toString()
             val participantesEvento = binding.editTextNumberParticipantes.text.toString()
             val precoIngresso = binding.editTextNumberPreco.text.toString()
 
             if (nomeEvento.isNotEmpty() && descricaoEvento.isNotEmpty() && dataInicio.isNotEmpty() && horaInicio.isNotEmpty()
-                && dataTermino.isNotEmpty() && horaTermino.isNotEmpty() && localEvento.isNotEmpty() && complementoEvento.isNotEmpty()
+                && dataTermino.isNotEmpty() && horaTermino.isNotEmpty() && localEvento.isNotEmpty() && logradouroEvento.isNotEmpty()
+                && complementoEvento.isNotEmpty() && bairroEvento.isNotEmpty() && ufEvento.isNotEmpty() && localidadeEvento.isNotEmpty()
                 && cepEvento.isNotEmpty() && participantesEvento.isNotEmpty() && precoIngresso.isNotEmpty()) {
 
                 val eventoData = hashMapOf(
@@ -94,7 +120,11 @@ class CriarEventoActivity : AppCompatActivity() {
                     "dataTermino" to dataTermino,
                     "horaTermino" to horaTermino,
                     "local" to localEvento,
+                    "logradouro" to logradouroEvento,
                     "complemento" to complementoEvento,
+                    "bairro" to bairroEvento,
+                    "uf" to ufEvento,
+                    "localidade" to localidadeEvento,
                     "CEP" to cepEvento,
                     "participantes" to participantesEvento,
                     "preco" to precoIngresso
@@ -112,7 +142,11 @@ class CriarEventoActivity : AppCompatActivity() {
                         binding.editTextDateEventoTermino.text.clear()
                         binding.editTextTimeEventoTermino.text.clear()
                         binding.editTextLocalEvento.text.clear()
+                        binding.editTextLogradouroEvento.text.clear()
                         binding.editTextLocalEventoComplemento.text.clear()
+                        binding.editTextBairroEvento.text.clear()
+                        binding.editTextUfEvento.text.clear()
+                        binding.editTextLocalidadeEvento.text.clear()
                         binding.editTextCepEvento.text.clear()
                         binding.editTextNumberParticipantes.text.clear()
                         binding.editTextNumberPreco.text.clear()
@@ -161,5 +195,117 @@ class CriarEventoActivity : AppCompatActivity() {
 
         timePickerDialog.show()
     }
+
+    private fun buscarEnderecoPorCep(cep: String) {
+        val url = "https://viacep.com.br/ws/$cep/json/"
+        val client = OkHttpClient()
+
+        val request = Request.Builder()
+            .url(url)
+            .build()
+
+        Thread {
+            try {
+                client.newCall(request).execute().use { response ->
+                    if (response.isSuccessful) {
+                        val json = response.body?.string()
+                        val jsonObject = JSONObject(json ?: "")
+                        val local = jsonObject.optString("local")
+                        val complemento = jsonObject.optString("complemento")
+                        val logradouro = jsonObject.optString("logradouro")
+                        val bairro = jsonObject.optString("bairro")
+                        val uf = jsonObject.optString("uf")
+                        val localidade = jsonObject.optString("localidade")
+
+                        runOnUiThread {
+                            // Preencher automaticamente os campos
+                            binding.editTextLocalEvento.setText(local)
+                            binding.editTextLocalEventoComplemento.setText(complemento)
+                            binding.editTextLogradouroEvento.setText(logradouro)
+                            binding.editTextBairroEvento.setText(bairro)
+                            binding.editTextLocalidadeEvento.setText(localidade)
+                            binding.editTextUfEvento.setText(uf)
+
+                            // Atualizar o mapa
+                            buscarCoordenadasPorEndereco("$local, $complemento, $logradouro, $bairro, $uf, $localidade")
+                        }
+                    } else {
+                        runOnUiThread {
+                            Toast.makeText(this, "Erro na resposta da API.", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                }
+            } catch (e: Exception) {
+                runOnUiThread {
+                    Toast.makeText(this, "Erro ao buscar endereço.", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }.start()
+    }
+
+    private fun atualizarMapa(latitude: Double, longitude: Double) {
+        val mapFragment = supportFragmentManager.findFragmentById(R.id.mapFragment) as SupportMapFragment
+
+        mapFragment.getMapAsync { googleMap ->
+            // Limpa os marcadores existentes, se necessário
+            googleMap.clear()
+
+            // Cria um LatLng a partir da latitude e longitude
+            val location = LatLng(latitude, longitude)
+
+            // Move a câmera para a nova localização
+            googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 15f))
+
+            // Adiciona um marcador na nova localização
+            googleMap.addMarker(MarkerOptions().position(location).title("Local do Evento"))
+        }
+    }
+
+
+
+    private fun buscarCoordenadasPorEndereco(endereco: String) {
+        val apiKey = "AIzaSyAWqni2JZ6gIG8SjDv2plzXZF0Or0JzrPw"
+        val url = "https://maps.googleapis.com/maps/api/geocode/json?address=${Uri.encode(endereco)}&key=$apiKey"
+        val client = OkHttpClient()
+
+        val request = Request.Builder()
+            .url(url)
+            .build()
+
+        Thread {
+            try {
+                client.newCall(request).execute().use { response ->
+                    if (response.isSuccessful) {
+                        val json = response.body?.string()
+                        val jsonObject = JSONObject(json ?: "")
+                        val results = jsonObject.getJSONArray("results")
+                        if (results.length() > 0) {
+                            val location = results.getJSONObject(0)
+                                .getJSONObject("geometry")
+                                .getJSONObject("location")
+                            val latitude = location.getDouble("lat")
+                            val longitude = location.getDouble("lng")
+
+                            runOnUiThread {
+                                atualizarMapa(latitude, longitude)
+                            }
+                        }
+                    } else {
+                        runOnUiThread {
+                            Toast.makeText(this, "Erro ao obter coordenadas.", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                }
+            } catch (e: Exception) {
+                runOnUiThread {
+                    Toast.makeText(this, "Erro ao buscar coordenadas.", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }.start()
+    }
+
+
+
+
 
 }
