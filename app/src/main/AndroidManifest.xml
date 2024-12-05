@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -16,6 +17,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FestAppofc"
         tools:targetApi="31">
+        <activity
+            android:name=".PixPaymentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ConvidarUsuarioActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EditarEventoActivity"
+            android:exported="false" />
         <activity
             android:name=".DadosUserActivity"
             android:exported="false" />
@@ -66,6 +76,9 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+        <meta-data
+            android:name="com.paypal.sdk.CLIENT_ID"
+            android:value="AXfxPoGSEJuPcGZxzGTj4bB8ae3Wm1JzLOxtkoTXjqSBWD2jW4CITP2BSStwxgVd4AgSlhpLkAs3vZH3" />
     </application>
 
 </manifest>

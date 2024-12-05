@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:id="@+id/mainScrollView">
+
+    <LinearLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/white">
+
+        <!--Parte do fundo verde -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:background="@color/green1"
+            android:layout_gravity="center">
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/cell_maps"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="40dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="EditarEvento"
+                android:textSize="24sp"
+                android:textColor="@color/black"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="130dp"
+                android:fontFamily="@font/poppins" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Edite as informações do evento abaixo e salve as alterações."
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="170dp"
+                android:fontFamily="@font/poppins"
+                />
+
+        </FrameLayout>
+
+        <EditText
+            android:id="@+id/editText_nome_evento"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:hint="Nome do Evento"
+            android:background="@drawable/edit_text"
+            android:layout_marginTop="40dp"
+            android:inputType="text"
+            android:fontFamily="@font/poppins"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="32dp"
+            android:textColorHint="@color/black"
+            android:textSize="17dp"
+            android:paddingLeft="20dp" />
+
+        <EditText
+            android:id="@+id/editText_descricao_evento"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="100dp"
+            android:hint="Descrição"
+            android:background="@drawable/edit_text"
+            android:layout_marginTop="20dp"
+            android:inputType="textMultiLine"
+            android:fontFamily="@font/poppins"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="32dp"
+            android:textColorHint="@color/black"
+            android:textSize="17dp"
+            android:paddingLeft="20dp"
+            android:gravity="top|start"
+            android:scrollbars="vertical"
+            android:overScrollMode="always"
+            android:paddingTop="10dp"/>
+
+        <!--Data e Hora de Início -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="32dp">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="Data de Início"
+                app:boxStrokeColor="@color/black"
+                app:boxStrokeWidth="1dp"
+                android:layout_marginTop="20dp"
+                android:textColorHint="@color/black">
+
+                <EditText
+                    android:id="@+id/editTextDate_evento_inicio"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:inputType="none"
+                    android:focusable="false"
+                    android:fontFamily="@font/poppins"
+                    android:textColor="@color/black"
+                    android:background="@drawable/edit_text"
+                    android:gravity="center_vertical"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="Hora de Início"
+                app:boxStrokeColor="@color/black"
+                app:boxStrokeWidth="1dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="32dp"
+                android:textColorHint="@color/black">
+
+                <EditText
+                    android:id="@+id/editTextTime_evento_inicio"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:inputType="none"
+                    android:focusable="false"
+                    android:fontFamily="@font/poppins"
+                    android:textColor="@color/black"
+                    android:background="@drawable/edit_text"
+                    android:gravity="center_vertical"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+
+        <!--Data e Hora de Término -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="32dp">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="Data de Término"
+                app:boxStrokeColor="@color/black"
+                app:boxStrokeWidth="1dp"
+                android:layout_marginTop="20dp"
+                android:textColorHint="@color/black">
+
+                <EditText
+                    android:id="@+id/editTextDate_evento_termino"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:inputType="none"
+                    android:focusable="false"
+                    android:fontFamily="@font/poppins"
+                    android:textColor="@color/black"
+                    android:background="@drawable/edit_text"
+                    android:gravity="center_vertical"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="Hora de Término"
+                app:boxStrokeColor="@color/black"
+                app:boxStrokeWidth="1dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="32dp"
+                android:textColorHint="@color/black">
+
+                <EditText
+                    android:id="@+id/editTextTime_evento_termino"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:inputType="none"
+                    android:focusable="false"
+                    android:fontFamily="@font/poppins"
+                    android:textColor="@color/black"
+                    android:background="@drawable/edit_text"
+                    android:gravity="center_vertical"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/editText_local_evento"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:hint="Local do Evento"
+            android:background="@drawable/edit_text"
+            android:layout_marginTop="20dp"
+            android:inputType="text"
+            android:fontFamily="@font/poppins"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="32dp"
+            android:textColorHint="@color/black"
+            android:textSize="17dp"
+            android:paddingLeft="20dp" />
+
+        <EditText
+            android:id="@+id/editText_logradouro_evento"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:hint="Logradouro"
+            android:background="@drawable/edit_text"
+            android:layout_marginTop="20dp"
+            android:inputType="text"
+            android:fontFamily="@font/poppins"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="32dp"
+            android:textColorHint="@color/black"
+            android:textSize="17dp"
+            android:paddingLeft="20dp" />
+
+        <EditText
+            android:id="@+id/editText_local_evento_complemento"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:hint="Complemento"
+            android:background="@drawable/edit_text"
+            android:layout_marginTop="20dp"
+            android:inputType="text"
+            android:fontFamily="@font/poppins"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="32dp"
+            android:textColorHint="@color/black"
+            android:textSize="17dp"
+            android:paddingLeft="20dp" />
+
+        <EditText
+            android:id="@+id/editText_bairro_evento"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:hint="Bairro"
+            android:background="@drawable/edit_text"
+            android:layout_marginTop="20dp"
+            android:inputType="text"
+            android:fontFamily="@font/poppins"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="32dp"
+            android:textColorHint="@color/black"
+            android:textSize="17dp"
+            android:paddingLeft="20dp" />
+
+        <EditText
+            android:id="@+id/editText_uf_evento"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:hint="UF"
+            android:background="@drawable/edit_text"
+            android:layout_marginTop="20dp"
+            android:inputType="text"
+            android:fontFamily="@font/poppins"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="32dp"
+            android:textColorHint="@color/black"
+            android:textSize="17dp"
+            android:paddingLeft="20dp" />
+
+        <EditText
+            android:id="@+id/editText_localidade_evento"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:hint="Localidade"
+            android:background="@drawable/edit_text"
+            android:layout_marginTop="20dp"
+            android:inputType="text"
+            android:fontFamily="@font/poppins"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="32dp"
+            android:textColorHint="@color/black"
+            android:textSize="17dp"
+            android:paddingLeft="20dp" />
+
+        <EditText
+            android:id="@+id/editText_cep_evento"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:hint="CEP"
+            android:background="@drawable/edit_text"
+            android:layout_marginTop="20dp"
+            android:inputType="number"
+            android:fontFamily="@font/poppins"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="32dp"
+            android:textColorHint="@color/black"
+            android:textSize="17dp"
+            android:paddingLeft="20dp" />
+
+        <EditText
+            android:id="@+id/editTextNumber_participantes"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:hint="Número de Participantes"
+            android:background="@drawable/edit_text"
+            android:layout_marginTop="20dp"
+            android:inputType="number"
+            android:fontFamily="@font/poppins"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="32dp"
+            android:textColorHint="@color/black"
+            android:textSize="17dp"
+            android:paddingLeft="20dp" />
+
+        <EditText
+            android:id="@+id/editTextNumber_preco"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:hint="Preço do Ingresso"
+            android:background="@drawable/edit_text"
+            android:layout_marginTop="20dp"
+            android:inputType="number"
+            android:fontFamily="@font/poppins"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="32dp"
+            android:textColorHint="@color/black"
+            android:textSize="17dp"
+            android:paddingLeft="20dp" />
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_criar_evento"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:text="Atualizar"
+            android:textStyle="bold"
+            android:textAllCaps="false"
+            android:fontFamily="@font/poppins"
+            android:textColor="@color/white"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="32dp"
+            android:layout_marginTop="20dp"
+            android:textSize="17dp"
+            android:background="@drawable/btn_verde" />
+
+    </LinearLayout>
+
+</ScrollView>
+

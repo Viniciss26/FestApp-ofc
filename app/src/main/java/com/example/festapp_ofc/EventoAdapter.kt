@@ -1,33 +1,53 @@
 package com.example.festapp_ofc
 
-import Evento
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import android.widget.PopupMenu
 import androidx.recyclerview.widget.RecyclerView
+import com.example.festapp_ofc.databinding.ItemEventoBinding
 
-class EventoAdapter(private val eventoList: List<Evento>) : RecyclerView.Adapter<EventoAdapter.EventoViewHolder>() {
+class EventoAdapter(
+    private val eventos: List<Evento>,
+    private val onMenuItemClick: (Evento, Int) -> Unit
+) : RecyclerView.Adapter<EventoAdapter.EventoViewHolder>() {
+
+    inner class EventoViewHolder(val binding: ItemEventoBinding) : RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventoViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_evento, parent, false)
-        return EventoViewHolder(view)
+        val binding = ItemEventoBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return EventoViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: EventoViewHolder, position: Int) {
-        val evento = eventoList[position]
-        holder.bind(evento)
-    }
+        val evento = eventos[position]
+        holder.binding.textViewNomeEvento.text = evento.nome
+        holder.binding.textViewBairroEvento.text = evento.bairro
 
-    override fun getItemCount(): Int = eventoList.size
+        // Menu de opções (três pontinhos)
+        holder.binding.imageViewMenu.setOnClickListener { view ->
+            val popupMenu = PopupMenu(view.context, view)
+            popupMenu.menuInflater.inflate(R.menu.event_menu, popupMenu.menu)
 
-    inner class EventoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val nomeEvento: TextView = itemView.findViewById(R.id.textViewNomeEvento)
-        private val bairroEvento: TextView = itemView.findViewById(R.id.textViewBairroEvento)
-
-        fun bind(evento: Evento) {
-            nomeEvento.text = evento.nome
-            bairroEvento.text = evento.bairro
+            popupMenu.setOnMenuItemClickListener { menuItem ->
+                when (menuItem.itemId) {
+                    R.id.delete_event -> {
+                        onMenuItemClick(evento, R.id.delete_event)
+                        true
+                    }
+                    R.id.edit_event -> {
+                        onMenuItemClick(evento, R.id.edit_event)
+                        true
+                    }
+                    R.id.invite_event -> {
+                        onMenuItemClick(evento, R.id.invite_event)
+                        true
+                    }
+                    else -> false
+                }
+            }
+            popupMenu.show()
         }
     }
+
+    override fun getItemCount(): Int = eventos.size
 }

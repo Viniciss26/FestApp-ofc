@@ -7,25 +7,20 @@
     android:layout_height="match_parent"
     tools:context=".TelaPrincipalActivity">
 
-    <ScrollView
+    <!-- RecyclerView para exibir os eventos -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewEventos"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:fillViewport="true"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/iconsNav"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:padding="8dp"
+        android:clipToPadding="false"
+        android:scrollbars="vertical" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-
-        </LinearLayout>
-    </ScrollView>
-
-    <!--Parte Fixa da Navegação -->
+    <!-- Parte Fixa da Navegação -->
     <LinearLayout
         android:id="@+id/iconsNav"
         android:layout_width="match_parent"
@@ -36,7 +31,7 @@
         android:elevation="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" >
+        app:layout_constraintEnd_toEndOf="parent">
 
         <ImageButton
             android:id="@+id/iconHome"
@@ -45,7 +40,7 @@
             android:src="@drawable/ic_home"
             android:layout_marginStart="50dp"
             android:contentDescription="Ícone de Home"
-            android:background="@android:color/transparent"/>
+            android:background="@android:color/transparent" />
 
         <ImageButton
             android:id="@+id/iconCalendar"
@@ -53,8 +48,8 @@
             android:layout_height="wrap_content"
             android:src="@drawable/ic_calendar"
             android:layout_marginStart="50dp"
-            android:contentDescription="Ícone de calendario"
-            android:background="@android:color/transparent"/>
+            android:contentDescription="Ícone de calendário"
+            android:background="@android:color/transparent" />
 
         <ImageButton
             android:id="@+id/iconPerson"
@@ -62,8 +57,8 @@
             android:layout_height="wrap_content"
             android:src="@drawable/ic_person"
             android:layout_marginStart="50dp"
-            android:contentDescription="Ícone de user"
-            android:background="@android:color/transparent"/>
+            android:contentDescription="Ícone de usuário"
+            android:background="@android:color/transparent" />
 
         <ImageButton
             android:id="@+id/iconExit"
@@ -72,7 +67,7 @@
             android:src="@drawable/ic_exit"
             android:layout_marginStart="50dp"
             android:contentDescription="Ícone de sair"
-            android:background="@android:color/transparent"/>
+            android:background="@android:color/transparent" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,14 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/delete_event"
+        android:title="Excluir evento" />
+    <item
+        android:id="@+id/edit_event"
+        android:title="Editar evento" />
+    <item
+        android:id="@+id/invite_event"
+        android:title="Convidar" />
+    <item
+        android:id="@+id/payment_event"
+        android:title="Pagamento" />
+</menu>

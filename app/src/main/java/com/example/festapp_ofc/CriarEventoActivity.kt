@@ -21,6 +21,7 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -127,7 +128,8 @@ class CriarEventoActivity : AppCompatActivity() {
                     "localidade" to localidadeEvento,
                     "CEP" to cepEvento,
                     "participantes" to participantesEvento,
-                    "preco" to precoIngresso
+                    "preco" to precoIngresso,
+                    "criadorUid" to FirebaseAuth.getInstance().currentUser?.uid
                 )
 
                 db.collection("Eventos")
